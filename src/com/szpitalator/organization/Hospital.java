@@ -4,10 +4,11 @@ import com.szpitalator.people.HospitalEmployee;
 
 import java.util.List;
 
-public class Hospital extends Building{
+public class Hospital implements IHospital{
+    String name;
+    long surface;
     List<HospitalEmployee> employees;
+    List<Room> roomList;
 
-    public static void spawnPatients(int numberOfPatients){}
-    public static void spawnEmployees(int numberOfEmployees){}
-    public static void assignRoom(HospitalEmployee employee1){}
+    public int getSize(){return roomList.size();}
 }
