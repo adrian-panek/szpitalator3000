@@ -1,11 +1,18 @@
 package com.szpitalator.organization;
 
-import com.szpitalator.organization.IHospitalCreator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class HospitalCreator implements IHospitalCreator {
+    @Override
     public IHospital createHospital() {
-        IHospital hospital = new Hospital();
+        List<Room> roomList = new LinkedList<>();
+        for (int i=0; i<5; i++){
+            Room room = new Room("Name", 15);
+            roomList.add(room);
+        }
+        IHospital hospital = new Hospital("Hospital", 150, roomList);
         return hospital;
     }
-};
+}
 

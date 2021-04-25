@@ -4,8 +4,10 @@ public class Person {
     String name;
     String surname;
 
-    public static void getName(){};
-    public static void getSurname(){};
+    public Person(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
 }
 
 

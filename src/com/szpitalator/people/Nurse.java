@@ -2,5 +2,8 @@ package com.szpitalator.people;
 
 public class Nurse extends HospitalEmployee {
 
-    public static void transportPatient(Patient patient){}
+    public Nurse(String name, String surname, int id){
+        super(name, surname, id);
+    }
+
 }
