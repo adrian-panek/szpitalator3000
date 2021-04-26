@@ -1,18 +1,37 @@
 package com.szpitalator.organization;
 
-import java.util.LinkedList;
+import com.szpitalator.people.HospitalEmployee;
+import com.szpitalator.people.Patient;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class HospitalCreator implements IHospitalCreator {
     @Override
-    public IHospital createHospital() {
-        List<Room> roomList = new LinkedList<>();
-        for (int i=0; i<5; i++){
-            Room room = new Room("Name", 15);
+    public IHospital createHospital(int numberOfRooms) {
+        numberOfRooms = 5; // docelowo to będzie cin do tego
+        List<Room> roomList = new ArrayList<>();
+        for (int i=0; i<numberOfRooms; i++){
+            Room room = new Room("Name", i);
             roomList.add(room);
         }
-        IHospital hospital = new Hospital("Hospital", 150, roomList);
+
+        IHospital hospital = new Hospital("Szpital Leśna Góra", 150, roomList);
+
+        List<HospitalEmployee> employeeList = new ArrayList<>();
+
+        for (int i=0; i<numberOfRooms; i++){
+            // todo HospitalEmployee zmienić na klase abstrakcyjna i tutaj tworzyc bezposniednio pielegniarki i doktorów
+            HospitalEmployee employee = new HospitalEmployee("Roman", "Fitzner", hospital);
+            hospital.addEmployee(employee);
+            employeeList.add(employee);
+        }
+
+
+        for (int i=0; i<numberOfRooms; i++){
+            roomList.get(i).setCareTaker(employeeList.get(i));
+        }
+
         return hospital;
     }
 }
-

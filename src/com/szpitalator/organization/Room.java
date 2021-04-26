@@ -6,8 +6,16 @@ import com.szpitalator.people.Patient;
 public class Room {
     String name;
     int roomNumber;
-    //HospitalEmployee careTaker;
+    HospitalEmployee careTaker;
     //Patient operatedPatient;
+
+    public HospitalEmployee getCareTaker() {
+        return careTaker;
+    }
+
+    public void setCareTaker(HospitalEmployee careTaker) {
+        this.careTaker = careTaker;
+    }
 
     public Room(String name, int roomNumber) {
         this.name = name;
@@ -16,6 +24,6 @@ public class Room {
 
     @Override
     public String toString() {
-        return super.toString();
+        return new String("Room: " + name + " no: " + roomNumber);
     }
 }

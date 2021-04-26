@@ -1,10 +1,17 @@
 package com.szpitalator.people;
 
-public class HospitalEmployee extends Person {
-    int id;
+import com.szpitalator.organization.Hospital;
+import com.szpitalator.organization.IHospital;
 
-    public HospitalEmployee(String name, String surname, int id){
+public class HospitalEmployee extends Person {
+    IHospital hospital;
+
+    public HospitalEmployee(String name, String surname, IHospital hospital){
         super(name, surname);
-        this.id = id;
+        this.hospital = hospital;
+    }
+
+    public void helpPatient(Patient patient) {
+
     }
 }

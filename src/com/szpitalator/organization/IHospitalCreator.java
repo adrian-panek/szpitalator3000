@@ -1,5 +1,5 @@
 package com.szpitalator.organization;
 
 public interface IHospitalCreator {
-    public IHospital createHospital();
+    public IHospital createHospital(int numberOfRooms);
 }
