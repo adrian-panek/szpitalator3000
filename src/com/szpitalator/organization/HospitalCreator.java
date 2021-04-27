@@ -1,7 +1,9 @@
 package com.szpitalator.organization;
 
+import com.szpitalator.people.Doctor;
 import com.szpitalator.people.HospitalEmployee;
-import com.szpitalator.people.Patient;
+import com.szpitalator.organization.Hospital;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,8 @@ public class HospitalCreator implements IHospitalCreator {
 
         for (int i=0; i<numberOfRooms; i++){
             // todo HospitalEmployee zmienić na klase abstrakcyjna i tutaj tworzyc bezposniednio pielegniarki i doktorów
-            HospitalEmployee employee = new HospitalEmployee("Roman", "Fitzner", hospital);
-            hospital.addEmployee(employee);
-            employeeList.add(employee);
+            employeeList.add(new Doctor("Roman", "Fitzner", hospital));
         }
-
 
         for (int i=0; i<numberOfRooms; i++){
             roomList.get(i).setCareTaker(employeeList.get(i));

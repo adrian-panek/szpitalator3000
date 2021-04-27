@@ -7,5 +7,4 @@ public interface IHospital {
     public int getSize();
     public void servePatientAtReceptionDesk(Patient patient);
     public Room getRoomForPatient(Patient patient);
-    public void addEmployee(HospitalEmployee employee);
 }

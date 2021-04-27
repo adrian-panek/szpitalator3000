@@ -1,5 +1,6 @@
 package com.szpitalator.organization;
 
+import com.szpitalator.people.Doctor;
 import com.szpitalator.people.HospitalEmployee;
 import com.szpitalator.people.Patient;
 
@@ -33,7 +34,7 @@ public class Hospital implements IHospital{
     @Override
     public void servePatientAtReceptionDesk(Patient patient) {
         Random random = new Random();
-        int randomIndex = random.nextInt(roomList.size()); // todo: dodać generownie random
+        int randomIndex = random.nextInt(roomList.size());
         nextRoomForPatient.put(patient, randomIndex);
         System.out.println(patient);
 
@@ -56,9 +57,5 @@ public class Hospital implements IHospital{
             ret += '\n';
         }
         return  ret;
-    }
-
-    public void addEmployee(HospitalEmployee employee) {
-        employeeList.add(employee);
     }
 }
