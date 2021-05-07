@@ -28,13 +28,16 @@ public class Simulation {
     }
 
     public void run() {
-
+        // todo: wyswietlic wszystkich pacientow za pomocna toString z Patient, w celu sprwadzenia poprawnego zachownia na recepcji
         int iters = maxIter;
         do {
 //            if (isEverybodyCured()) break; todo: zaimplementować np przez sprawdzenie czy w szpitalu w mapie nextRoomForPatient jeszcze ktoś jest
             for (Patient patient : patientList) {
                 patient.visitRoom();
             }
+
+            System.out.println("Iteration: " + (maxIter - iters));
+            System.out.println(hospital.toString());
         } while (--iters > 0);
 
     }

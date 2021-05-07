@@ -1,7 +1,6 @@
 package com.szpitalator.organization;
 
 import com.szpitalator.people.HospitalEmployee;
-import com.szpitalator.people.Patient;
 
 public class Room {
     String name;
@@ -25,5 +24,9 @@ public class Room {
     @Override
     public String toString() {
         return new String("Room: " + name + " no: " + roomNumber);
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
     }
 }

@@ -13,8 +13,8 @@ public class HospitalCreator implements IHospitalCreator {
     public IHospital createHospital(int numberOfRooms) {
         numberOfRooms = 5; // docelowo to będzie cin do tego
         List<Room> roomList = new ArrayList<>();
-        for (int i=0; i<numberOfRooms; i++){
-            Room room = new Room("Name", i);
+        for (int i=1; i<=numberOfRooms; i++){
+            Room room = new Room("Name_" + i, i);
             roomList.add(room);
         }
 

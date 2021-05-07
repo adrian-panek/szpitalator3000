@@ -5,9 +5,10 @@ import com.szpitalator.organization.Room;
 
 public class Patient extends Person {
     private IHospital hospital;
-    String disease;
+    private Disease disease;
+    private Room nextRoomToVisit;
 
-    public Patient(String name, String surname){
+    public Patient(String name, String surname) {
         super(name, surname);
     }
 
@@ -16,8 +17,28 @@ public class Patient extends Person {
     }
 
     public void visitRoom() {
-        Room room = hospital.getRoomForPatient(this);
-        HospitalEmployee careTaker = room.getCareTaker();
+        hospital.assignRoomToPatient(this, nextRoomToVisit);
+        HospitalEmployee careTaker = nextRoomToVisit.getCareTaker();
         careTaker.helpPatient(this);
+    }
+
+    public void setNextRoom(Room room) {
+        nextRoomToVisit = room;
+    }
+
+
+    public void assignDisease(Disease disease) {
+        this.disease = disease;
+    }
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    @Override
+    public String toString() {
+        String ret = super.toString();
+        ret += " disease: " + disease + " next room: " + nextRoomToVisit.getRoomNumber();
+        return ret;
     }
 }

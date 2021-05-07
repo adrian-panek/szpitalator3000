@@ -1,61 +1,72 @@
 package com.szpitalator.organization;
 
-import com.szpitalator.people.Doctor;
 import com.szpitalator.people.HospitalEmployee;
 import com.szpitalator.people.Patient;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
-public class Hospital implements IHospital{
+public class Hospital implements IHospital {
     private String name;
     private long surface;
     private List<HospitalEmployee> employeeList;
-    private List<Room> roomList;
-    private Map<Patient, Integer> patientsByRooms;
-    private Map<Patient, Integer> nextRoomForPatient;
+    private Map<Room, Patient> rooms;
+    private Random random;
 
 
     public Hospital(String name, long surface, List<Room> roomList) {
         this.name = name;
         this.surface = surface;
-        this.roomList = roomList;
-        patientsByRooms = new HashMap<>();
-        nextRoomForPatient = new HashMap<>();
+        rooms = new HashMap<>();
+
+        for (Room room : roomList) {
+            rooms.put(room, null);
+        }
+
         employeeList = new ArrayList<>();
+        random = new Random();
     }
 
     @Override
-    public int getSize(){return roomList.size();}
+    public int getSize() {
+        return rooms.size();
+    }
 
     @Override
     public void servePatientAtReceptionDesk(Patient patient) {
-        Random random = new Random();
-        int randomIndex = random.nextInt(roomList.size());
-        nextRoomForPatient.put(patient, randomIndex);
-        System.out.println(patient);
-
+        int randomIndex = random.nextInt(rooms.size());
+        Set<Room> keySet = rooms.keySet();
+        List<Room> keyList = new ArrayList<>(keySet);
+        Room randomRoom = keyList.get(randomIndex);
+        patient.setNextRoom(randomRoom);
     }
 
     @Override
-    public Room getRoomForPatient(Patient patient) {
-        int roomId = nextRoomForPatient.get(patient);
-//        System.out.println(roomId);
-
-        return roomList.get(roomId);
+    public boolean assignRoomToPatient(Patient patient, Room room) {
+        Patient patientInRoom = rooms.get(room);
+        if (patientInRoom != null) {
+            return false;
+        }
+        rooms.put(room, patient);
+        return true;
     }
 
     @Override
     public String toString() {
-        String ret = new  String("Hospital: " + name);
+        String ret = new String("Hospital: " + name);
         ret += "\nRooms: \n";
-        for (Room room : roomList) {
-            ret += room.toString();
+
+        for (Map.Entry<Room, Patient> entry : rooms.entrySet()) {
+            Room room = entry.getKey();
+            Patient patient = entry.getValue();
+            ret += entry.getKey().toString();
+            if (patient != null) {
+                ret += " taken by patient: " + patient.toString();
+            } else {
+                ret += " empty";
+            }
             ret += '\n';
         }
-        return  ret;
+
+        return ret;
     }
 }

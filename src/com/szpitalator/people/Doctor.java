@@ -9,4 +9,3 @@ public class Doctor extends HospitalEmployee {
         super(name, surname, hospital);
     }
 }
-
