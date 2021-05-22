@@ -7,16 +7,20 @@ import com.szpitalator.people.IPatientListCreator;
 import com.szpitalator.people.Patient;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Simulation {
     private int maxIter;
     private IHospital hospital;
     private List<Patient> patientList;
+    Scanner scan = new Scanner(System.in);
 
     public Simulation(IHospitalCreator hospitalCreator, IPatientListCreator personListCreator, int maxIter) {
+        System.out.print("Podaj liczbę pacjentów: ");
+        byte numberOfPatients = scan.nextByte();
         int numberOfRooms = 5;
         hospital = hospitalCreator.createHospital(numberOfRooms);
-        patientList = personListCreator.createPatientList();
+        patientList = personListCreator.createPatientList(numberOfPatients);
         this.maxIter = maxIter;
 
         System.out.println(hospital.toString());
@@ -36,9 +40,9 @@ public class Simulation {
                 patient.visitRoom();
             }
 
-            System.out.println("Iteration: " + (maxIter - iters));
-            System.out.println(hospital.toString());
-        } while (--iters > 0);
 
+        } while (--iters > 0);
+        System.out.println("Iteration: " + (maxIter - iters));
+        System.out.println(hospital.toString());
     }
 }

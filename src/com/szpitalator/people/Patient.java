@@ -3,10 +3,13 @@ package com.szpitalator.people;
 import com.szpitalator.organization.IHospital;
 import com.szpitalator.organization.Room;
 
+import java.util.Random;
+
 public class Patient extends Person {
     private IHospital hospital;
     private Disease disease;
     private Room nextRoomToVisit;
+;
 
     public Patient(String name, String surname) {
         super(name, surname);
@@ -38,7 +41,7 @@ public class Patient extends Person {
     @Override
     public String toString() {
         String ret = super.toString();
-        ret += " disease: " + disease + " next room: " + nextRoomToVisit.getRoomNumber();
+        ret += " chorego na: " + disease + " numer następnego pokoju: " + nextRoomToVisit.getRoomNumber();
         return ret;
     }
 }

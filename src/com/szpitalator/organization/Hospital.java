@@ -55,14 +55,14 @@ public class Hospital implements IHospital {
         String ret = new String("Hospital: " + name);
         ret += "\nRooms: \n";
 
-        for (Map.Entry<Room, Patient> entry : rooms.entrySet()) {
-            Room room = entry.getKey();
-            Patient patient = entry.getValue();
-            ret += entry.getKey().toString();
+        for (Map.Entry<Room, Patient> value : rooms.entrySet()) {
+            Room room = value.getKey();
+            Patient patient = value.getValue();
+            ret += value.getKey().toString();
             if (patient != null) {
-                ret += " taken by patient: " + patient.toString();
+                ret += " zajęty przez pacjenta: " + patient.toString();
             } else {
-                ret += " empty";
+                ret += " pusty";
             }
             ret += '\n';
         }

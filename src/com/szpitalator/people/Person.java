@@ -1,5 +1,7 @@
 package com.szpitalator.people;
 
+import java.util.Random;
+
 public class Person {
     String name;
     String surname;
@@ -11,7 +13,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return new String("Name: " + name + " Surname: " + surname);
+        return new String("imię: " + name + " nazwisko: " + surname);
     }
 }
 
