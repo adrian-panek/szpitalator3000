@@ -5,5 +5,6 @@ public enum Disease {
     KORONAWIRUS,
     OTYŁOŚĆ,
     DEPRESJA,
-    CUKRZYCA
+    CUKRZYCA,
+    ZDROWY
 }

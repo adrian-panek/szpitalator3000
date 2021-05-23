@@ -19,8 +19,8 @@ public class Simulation {
     public Simulation(IHospitalCreator hospitalCreator, IPatientListCreator personListCreator, int maxIter) {
         System.out.print("Podaj liczbę pacjentów: ");
         byte numberOfPatients = scan.nextByte();
-        int numberOfRooms = 5;
-        hospital = hospitalCreator.createHospital(numberOfRooms);
+        int numberOfRooms = 10;
+        hospital = hospitalCreator.createHospital(numberOfPatients);
         patientList = personListCreator.createPatientList(numberOfPatients);
         this.maxIter = maxIter;
 
@@ -43,7 +43,6 @@ public class Simulation {
 
 
         } while (--iters > 0);
-        System.out.println("Iteration: " + (maxIter - iters));
         System.out.println(hospital.toString());
     }
 }

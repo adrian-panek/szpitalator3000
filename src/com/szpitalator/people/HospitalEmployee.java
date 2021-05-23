@@ -18,8 +18,10 @@ public abstract class HospitalEmployee extends Person {
         Disease disease = Disease.values()[rand1];
         patient.assignDisease(disease);
 
-        int rand2 = random.nextInt(DiseaseHandler.values().length);
-        DiseaseHandler handler = DiseaseHandler.values()[rand2];
-        patient.assignTreatement(handler);
+        if (disease == Disease.ZDROWY){
+
+        } else {
+
+        }
     }
 }

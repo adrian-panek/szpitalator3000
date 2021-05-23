@@ -7,7 +7,6 @@ public class Patient extends Person {
     private IHospital hospital;
     private Disease disease;
     private Room nextRoomToVisit;
-    private DiseaseHandler handler;
 
     public Patient(String name, String surname) {
         super(name, surname);
@@ -18,9 +17,11 @@ public class Patient extends Person {
     }
 
     public void visitRoom() {
-        hospital.assignRoomToPatient(this, nextRoomToVisit);
-        HospitalEmployee careTaker = nextRoomToVisit.getCareTaker();
-        careTaker.helpPatient(this);
+        if (nextRoomToVisit != null){
+            hospital.assignRoomToPatient(this, nextRoomToVisit);
+            HospitalEmployee careTaker = nextRoomToVisit.getCareTaker();
+            careTaker.helpPatient(this);
+        }
     }
 
     public void setNextRoom(Room room) {
@@ -31,16 +32,11 @@ public class Patient extends Person {
         this.disease = disease;
     }
 
-    public void assignTreatement(DiseaseHandler handler) {
-        this.handler = handler;
-    }
-
-    public DiseaseHandler getHandler() { return handler; }
-
     @Override
     public String toString() {
         String ret = super.toString();
-        ret += " chorego na: " + disease + " numer następnego pokoju: " + nextRoomToVisit.getRoomNumber() + " podjęta kuracja: " + handler;
+        ret += " chorego na: " + disease + " numer następnego pokoju: " + nextRoomToVisit.getRoomNumber();
         return ret;
     }
+
 }

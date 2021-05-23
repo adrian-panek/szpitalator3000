@@ -6,7 +6,6 @@ public class Room {
     String name;
     int roomNumber;
     HospitalEmployee careTaker;
-    //Patient operatedPatient;
 
     public HospitalEmployee getCareTaker() {
         return careTaker;

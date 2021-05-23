@@ -33,9 +33,9 @@ public class Hospital implements IHospital {
 
     @Override
     public void servePatientAtReceptionDesk(Patient patient) {
-        int randomIndex = random.nextInt(rooms.size());
         Set<Room> keySet = rooms.keySet();
         List<Room> keyList = new ArrayList<>(keySet);
+        int randomIndex = random.nextInt(rooms.size());
         Room randomRoom = keyList.get(randomIndex);
         patient.setNextRoom(randomRoom);
     }
