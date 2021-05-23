@@ -13,6 +13,7 @@ public class Simulation {
     private int maxIter;
     private IHospital hospital;
     private List<Patient> patientList;
+    private Patient patient;
     Scanner scan = new Scanner(System.in);
 
     public Simulation(IHospitalCreator hospitalCreator, IPatientListCreator personListCreator, int maxIter) {

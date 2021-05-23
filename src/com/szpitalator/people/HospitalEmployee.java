@@ -1,7 +1,6 @@
 package com.szpitalator.people;
 
 import com.szpitalator.organization.IHospital;
-import com.szpitalator.people.Disease;
 
 import java.util.Random;
 
@@ -15,9 +14,12 @@ public abstract class HospitalEmployee extends Person {
     }
 
     public void helpPatient(Patient patient) {
-        // todo: przypisac chorobe do pacienta
-        int rand = random.nextInt(Disease.values().length);
-        Disease disease = Disease.values()[rand];
+        int rand1 = random.nextInt(Disease.values().length);
+        Disease disease = Disease.values()[rand1];
         patient.assignDisease(disease);
+
+        int rand2 = random.nextInt(DiseaseHandler.values().length);
+        DiseaseHandler handler = DiseaseHandler.values()[rand2];
+        patient.assignTreatement(handler);
     }
 }
