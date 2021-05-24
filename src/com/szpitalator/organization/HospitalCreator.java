@@ -11,9 +11,8 @@ import java.util.List;
 public class HospitalCreator implements IHospitalCreator {
     @Override
     public IHospital createHospital(int numberOfRooms) {
-        numberOfRooms = 5; // docelowo to będzie cin do tego
         List<Room> roomList = new ArrayList<>();
-        for (int i=1; i<=numberOfRooms; i++){
+        for (int i=0; i<numberOfRooms; i++){
             Room room = new Room("Name_" + i, i);
             roomList.add(room);
         }
@@ -23,7 +22,6 @@ public class HospitalCreator implements IHospitalCreator {
         List<HospitalEmployee> employeeList = new ArrayList<>();
 
         for (int i=0; i<numberOfRooms; i++){
-            // todo HospitalEmployee zmienić na klase abstrakcyjna i tutaj tworzyc bezposniednio pielegniarki i doktorów
             employeeList.add(new Doctor("Roman", "Fitzner", hospital));
         }
 

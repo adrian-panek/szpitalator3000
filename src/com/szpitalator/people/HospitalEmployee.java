@@ -15,7 +15,6 @@ public abstract class HospitalEmployee extends Person {
     }
 
     public void helpPatient(Patient patient) {
-        // todo: przypisac chorobe do pacienta
         int rand = random.nextInt(Disease.values().length);
         Disease disease = Disease.values()[rand];
         patient.assignDisease(disease);

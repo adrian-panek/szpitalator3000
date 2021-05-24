@@ -1,9 +1,14 @@
 package com.szpitalator.people;
 
 public enum Disease {
-    CANCER,
+    CANCER, //rak
     CORONAVIRUS,
-    OBESITY,
-    DEPRESSION,
-    DIABETES
+    OBESITY, //otyłość
+    DEPRESSION, //depresa
+    DIABETES, //cukrzyca
+    ALZHEIRMER,
+    DEMENTIA, //demecja
+    TUBERCOULOSIS, //gruźlica
+    DIARRHEA, // biegunka
+    FLU
 }
