@@ -10,9 +10,9 @@ import java.util.List;
 
 public class HospitalCreator implements IHospitalCreator {
     @Override
-    public IHospital createHospital(int numberOfRooms) {
+    public IHospital createHospital(int numberOfPatients) {
         List<Room> roomList = new ArrayList<>();
-        for (int i=0; i<numberOfRooms; i++){
+        for (int i=1; i<=numberOfPatients; i++){
             Room room = new Room("Name_" + i, i);
             roomList.add(room);
         }
@@ -21,11 +21,11 @@ public class HospitalCreator implements IHospitalCreator {
 
         List<HospitalEmployee> employeeList = new ArrayList<>();
 
-        for (int i=0; i<numberOfRooms; i++){
+        for (int i=0; i<numberOfPatients; i++){
             employeeList.add(new Doctor("Roman", "Fitzner", hospital));
         }
 
-        for (int i=0; i<numberOfRooms; i++){
+        for (int i=0; i<numberOfPatients; i++){
             roomList.get(i).setCareTaker(employeeList.get(i));
         }
 

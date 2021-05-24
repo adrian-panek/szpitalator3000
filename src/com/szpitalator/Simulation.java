@@ -13,13 +13,15 @@ public class Simulation {
     private int maxIter;
     private IHospital hospital;
     private List<Patient> patientList;
+    private Patient patient;
     Scanner scan = new Scanner(System.in);
 
     public Simulation(IHospitalCreator hospitalCreator, IPatientListCreator personListCreator, int maxIter) {
-        System.out.println("Podaj ilość pacjentów: ");
-        byte numberOfRooms = scan.nextByte();
-        hospital = hospitalCreator.createHospital(numberOfRooms);
-        patientList = personListCreator.createPatientList(numberOfRooms);
+        System.out.print("Podaj liczbę pacjentów: ");
+        byte numberOfPatients = scan.nextByte();
+        int numberOfRooms = 10;
+        hospital = hospitalCreator.createHospital(numberOfPatients);
+        patientList = personListCreator.createPatientList(numberOfPatients);
         this.maxIter = maxIter;
 
         System.out.println(hospital.toString());
@@ -33,7 +35,6 @@ public class Simulation {
     public void run() {
         // todo: wyswietlic wszystkich pacientow za pomocna toString z Patient, w celu sprwadzenia poprawnego zachownia na recepcji
         int iters = maxIter;
-
         do {
 //            if (isEverybodyCured()) break; todo: zaimplementować np przez sprawdzenie czy w szpitalu w mapie nextRoomForPatient jeszcze ktoś jest
             for (Patient patient : patientList) {
@@ -42,7 +43,6 @@ public class Simulation {
 
 
         } while (--iters > 0);
-        System.out.println("Iteration: " + (maxIter - iters));
         System.out.println(hospital.toString());
     }
 }

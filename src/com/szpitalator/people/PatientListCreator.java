@@ -1,32 +1,36 @@
 package com.szpitalator.people;
 
+import com.szpitalator.people.Person;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 public class PatientListCreator implements IPatientListCreator {
-    String[] names = {"Antoni", "Jan", "Jakub", "Aleksander", "Szymon", "Filip", "Mikołaj", "Stanisław"};
-    String[] surNames = {"Nowak", "Kowalski", "Wiśniewski", "Wójcik", "Kowalczyk", "Zieliński", "Woźniak", "Szymański"};
-    Random random = new Random();
-    Person person;
+    Random rand = new Random();
 
-    public String generateName(){
-        String name = names[random.nextInt(names.length)];
-        return name;
-    }
+    final String[] names = {"Antoni", "Jan", "Jakub", "Aleksander", "Franciszek", "Szymon", "Filip", "Mikołaj", "Staniwsław",
+            "Wojciech", "Adam"};
 
-    public String generateSurname(){
-        String name = surNames[random.nextInt(surNames.length)];
-        return name;
-   }
-
+    final String[] surnames = {"Nowak", "Kowalski", "Wiśniewski", "Wójcik", "Kowalczyk", "Kamiński", "Zieliński", "Szymański", "Lewandowski",
+            "Woźniak", "Wojciechowski"};
     @Override
-    public List<Patient> createPatientList(int numberOfRooms) {
+    public List<Patient> createPatientList(int numberOfPatients) {
         List <Patient> patientList = new LinkedList<>();
-        for (int i=0; i<numberOfRooms; i++){
-            Patient patient = new Patient(generateName(), generateSurname());
+        for (int i=0; i<numberOfPatients; i++){
+            Patient patient = new Patient(generateName(names), generateSurame(surnames));
             patientList.add(patient);
         }
         return patientList;
+    }
+
+    private String generateName(String[] names){
+        int randomIndex = rand.nextInt(names.length);
+        return names[randomIndex];
+    }
+
+    private String generateSurame(String[] surnames){
+        int randomIndex = rand.nextInt(surnames.length);
+        return surnames[randomIndex];
     }
 }

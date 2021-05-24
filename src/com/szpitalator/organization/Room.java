@@ -6,7 +6,6 @@ public class Room {
     String name;
     int roomNumber;
     HospitalEmployee careTaker;
-    //Patient operatedPatient;
 
     public HospitalEmployee getCareTaker() {
         return careTaker;
@@ -23,7 +22,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return new String("Room: " + name + " no: " + roomNumber);
+        return new String("Pokój: " + roomNumber);
     }
 
     public int getRoomNumber() {

@@ -17,28 +17,26 @@ public class Patient extends Person {
     }
 
     public void visitRoom() {
-        hospital.assignRoomToPatient(this, nextRoomToVisit);
-        HospitalEmployee careTaker = nextRoomToVisit.getCareTaker();
-        careTaker.helpPatient(this);
+        if (nextRoomToVisit != null){
+            hospital.assignRoomToPatient(this, nextRoomToVisit);
+            HospitalEmployee careTaker = nextRoomToVisit.getCareTaker();
+            careTaker.helpPatient(this);
+        }
     }
 
     public void setNextRoom(Room room) {
         nextRoomToVisit = room;
     }
 
-
     public void assignDisease(Disease disease) {
         this.disease = disease;
-    }
-
-    public Disease getDisease() {
-        return disease;
     }
 
     @Override
     public String toString() {
         String ret = super.toString();
-        ret += " disease: " + disease + " next room: " + nextRoomToVisit.getRoomNumber();
+        ret += " chorego na: " + disease + " numer następnego pokoju: " + nextRoomToVisit.getRoomNumber();
         return ret;
     }
+
 }
