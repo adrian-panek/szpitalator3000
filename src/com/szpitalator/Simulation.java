@@ -53,7 +53,6 @@ public class Simulation {
                         System.out.println(patient.toString() + " został wyleczony");
                     }
                 }
-                System.out.println(curedPatients);
             }
             if (curedPatients.size() == patientList.size()) {
                 System.out.println("Wszyscy pacjenci są zdrowi");
