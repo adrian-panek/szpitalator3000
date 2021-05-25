@@ -66,7 +66,10 @@ public class Hospital implements IHospital {
             }
             ret += '\n';
         }
-
         return ret;
+    }
+
+    public Map<Room, Patient> getRooms() {
+        return rooms;
     }
 }

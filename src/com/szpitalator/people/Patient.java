@@ -39,4 +39,7 @@ public class Patient extends Person {
         return ret;
     }
 
+    public Disease getDisease() {
+        return disease;
+    }
 }
