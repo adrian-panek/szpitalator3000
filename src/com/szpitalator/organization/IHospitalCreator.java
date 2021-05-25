@@ -6,6 +6,6 @@ import com.szpitalator.organization.Hospital;
 import java.util.List;
 
 public interface IHospitalCreator {
-    public IHospital createHospital(int numberOfRooms);
+    public IHospital createHospital(int numberOfPatients);
     //public List<HospitalEmployee> addEmployee(String name, String surname, IHospital hospital);
 }
