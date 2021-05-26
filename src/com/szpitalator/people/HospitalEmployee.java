@@ -23,8 +23,6 @@ public abstract class HospitalEmployee extends Person {
         Disease disease = Disease.values()[rand1];
         patient.assignDisease(disease);
 
-
-
         Set<Room> keySet = this.hospital.getRooms().keySet();
         List<Room> keyList = new ArrayList<>(keySet);
         int randomIndex = random.nextInt(this.hospital.getRooms().size());

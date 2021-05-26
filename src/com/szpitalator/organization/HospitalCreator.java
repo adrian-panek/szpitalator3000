@@ -22,8 +22,7 @@ public class HospitalCreator implements IHospitalCreator {
         List<HospitalEmployee> employeeList = new ArrayList<>();
 
         for (int i=0; i<numberOfPatients; i++){
-            // todo HospitalEmployee zmienić na klase abstrakcyjna i tutaj tworzyc bezposniednio pielegniarki i doktorów
-            employeeList.add(new Doctor("Roman", "Fitzner", hospital));
+            employeeList.add(new Doctor("Anna", "Kowalska", hospital));
         }
 
         for (int i=0; i<numberOfPatients; i++){

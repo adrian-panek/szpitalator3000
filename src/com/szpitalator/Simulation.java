@@ -18,10 +18,11 @@ public class Simulation {
     private Patient patient;
     private List<Patient> curedPatients = new LinkedList<>();
     Scanner scan = new Scanner(System.in);
+    byte numberOfPatients;
 
     public Simulation(IHospitalCreator hospitalCreator, IPatientListCreator personListCreator, int maxIter) {
         System.out.print("Podaj liczbę pacjentów: ");
-        byte numberOfPatients = scan.nextByte();
+        numberOfPatients = scan.nextByte();
         hospital = hospitalCreator.createHospital(numberOfPatients);
         patientList = personListCreator.createPatientList(numberOfPatients);
         this.maxIter = maxIter;
@@ -35,31 +36,27 @@ public class Simulation {
     }
 
     public void run() {
-        // todo: wyswietlic wszystkich pacientow za pomocna toString z Patient, w celu sprwadzenia poprawnego zachownia na recepcji
         int iters = maxIter;
         do {
             System.out.println("\nIteracja numer: " + (maxIter - iters));
-
-//            if (isEverybodyCured()) break; todo: zaimplementować np przez sprawdzenie czy w szpitalu w mapie nextRoomForPatient jeszcze ktoś jest
-            for (Patient patient : patientList) {
+            List<Patient> patientListCopy = new LinkedList<>(patientList);
+            for (Patient patient : patientListCopy) {
+                patient.visitRoom();
                 if (patient.getDisease() == Disease.ZDROWY){
-                    //patientList.remove(patient);
+                    patientList.remove(patient);
                     curedPatients.add(patient);
+                    System.out.println(patient.toString() + " został wyleczony");
                 } else {
-                    patient.visitRoom();
-                    if (patient.getDisease() != Disease.ZDROWY) {
-                        System.out.println(patient.toString() + " nie został wyleczony ");
-                    } else {
-                        System.out.println(patient.toString() + " został wyleczony");
-                    }
+                    System.out.println(patient.toString() + " NIE został wyleczony ");
                 }
-                System.out.println(curedPatients);
             }
-            if (curedPatients.size() == patientList.size()) {
-                System.out.println("Wszyscy pacjenci są zdrowi");
+            if (curedPatients.size() == numberOfPatients) {
+                System.out.println("\nWszyscy pacjenci są zdrowi!\n");
                 break;
             }
         } while (--iters > 0);
-        System.out.println(hospital.toString());
+        if (curedPatients.size() != numberOfPatients){
+            System.out.println("Niestety nie udało się wyleczyć wszystkich pacjentów. Koniec symulacji");
         }
     }
+}
