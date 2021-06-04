@@ -4,3 +4,7 @@ Doxyfile
 .idea
 Dokumentacja
 .gradle
+${project.build.directory}
+pom.xml
+przebieg_symulacji.txt
+szpitalator.xml
