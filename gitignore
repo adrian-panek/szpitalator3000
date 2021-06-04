@@ -1,0 +1,8 @@
+docu
+Dokumentacja
+${project.build.directory}
+target
+Doxyfile
+pom.xml
+przebieg_symulacji.txt
+szpitalator.iml
