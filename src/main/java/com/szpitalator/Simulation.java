@@ -38,6 +38,7 @@ public class Simulation {
     }
 
     public void run() {
+<<<<<<< HEAD:src/main/java/com/szpitalator/Simulation.java
         // todo: wyswietlic wszystkich pacientow za pomocna toString z Patient, w celu sprwadzenia poprawnego zachownia na recepcji
         String logs = "";
         int iters = maxIter;
@@ -45,16 +46,26 @@ public class Simulation {
             System.out.println("\nIteracja numer: " + (maxIter - iters));
 
 //            if (isEverybodyCured()) break; todo: zaimplementować np przez sprawdzenie czy w szpitalu w mapie nextRoomForPatient jeszcze ktoś jest
+=======
+        int iters = maxIter;
+        do {
+            System.out.println("\nIteracja numer: " + (maxIter - iters));
+>>>>>>> 98bb55635564cf41abc4d401268cd506425697e3:src/com/szpitalator/Simulation.java
             List<Patient> patientListCopy = new LinkedList<>(patientList);
             for (Patient patient : patientListCopy) {
                 patient.visitRoom();
                 if (patient.getDisease() == Disease.ZDROWY){
                     patientList.remove(patient);
                     curedPatients.add(patient);
+<<<<<<< HEAD:src/main/java/com/szpitalator/Simulation.java
                     logs += (patient.toString() + " został wyleczony" + "\n");
                     System.out.println(patient.toString() + " został wyleczony");
                 } else {
                     logs += (patient.toString() + " NIE został wyleczony " + "\n");
+=======
+                    System.out.println(patient.toString() + " został wyleczony");
+                } else {
+>>>>>>> 98bb55635564cf41abc4d401268cd506425697e3:src/com/szpitalator/Simulation.java
                     System.out.println(patient.toString() + " NIE został wyleczony ");
                 }
             }
@@ -72,5 +83,11 @@ public class Simulation {
             }
             System.out.println("Koniec symulacji, przebieg mozna odczytać w pliku");
         } while (--iters > 0);
+<<<<<<< HEAD:src/main/java/com/szpitalator/Simulation.java
+=======
+        if (curedPatients.size() != numberOfPatients){
+            System.out.println("Niestety nie udało się wyleczyć wszystkich pacjentów. Koniec symulacji");
+        }
+>>>>>>> 98bb55635564cf41abc4d401268cd506425697e3:src/com/szpitalator/Simulation.java
     }
 }
