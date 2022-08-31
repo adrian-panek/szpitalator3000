@@ -21,7 +21,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Package with Maven
-      run: mvn -DskipTests package 
+      run: mvn -DskipTests compile 
       
   Publish-Image:
     needs: Test
