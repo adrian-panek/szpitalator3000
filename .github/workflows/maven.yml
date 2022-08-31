@@ -24,6 +24,7 @@ jobs:
       run: mvn -DskipTests package 
       
   Publish-Image:
+    needs: Test
     runs-on: ubuntu-latest
     
     steps:
